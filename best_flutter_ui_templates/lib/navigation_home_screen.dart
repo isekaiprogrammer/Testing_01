@@ -2,7 +2,7 @@ import 'package:best_flutter_ui_templates/app_theme.dart';
 import 'package:best_flutter_ui_templates/custom_drawer/drawer_user_controller.dart';
 import 'package:best_flutter_ui_templates/custom_drawer/home_drawer.dart';
 import 'package:best_flutter_ui_templates/quiz_screen.dart';
-import 'package:best_flutter_ui_templates/course_screen.dart';
+import 'package:best_flutter_ui_templates/datas_course_screen.dart';
 import 'package:best_flutter_ui_templates/home_screen.dart';
 import 'package:best_flutter_ui_templates/user_screen.dart';
 import 'package:best_flutter_ui_templates/subscription_screen.dart';
@@ -59,7 +59,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
           break;
         case DrawerIndex.Course:
           setState(() {
-            screenView = CourseScreen();
+            screenView = DatasCourseScreen();
           });
           break;
         case DrawerIndex.Quiz:

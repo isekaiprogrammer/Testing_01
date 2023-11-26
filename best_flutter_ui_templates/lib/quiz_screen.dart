@@ -1,3 +1,4 @@
+import 'package:best_flutter_ui_templates/Score_Screen.dart';
 import 'package:best_flutter_ui_templates/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,63 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
+  int score = 0;
+  List<String> correctAnswers = [
+    "print",
+    "Input",
+    "B",
+    "#",
+    "True",
+    "7",
+    "def",
+    "3",
+    "len()",
+    "tuple",
+    "lower()",
+    "break",
+    "1",
+    "3",
+    "3"
+  ];
+  List<String> userAnswers = [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ];
+
   @override
   void initState() {
     super.initState();
+  }
+
+  bool isAnswerCorrect(int questionIndex, String userAnswer) {
+    return userAnswer.trim() == correctAnswers[questionIndex].trim();
+  }
+
+  void _submitButtonPressed() {
+    int correctAnswersCount = 0;
+    for (int i = 0; i < correctAnswers.length; i++) {
+      if (isAnswerCorrect(i, userAnswers[i])) {
+        correctAnswersCount++;
+      } else {}
+    }
+    score = (correctAnswersCount / correctAnswers.length * 100).round();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => ScoreScreen(score: score)),
+    );
   }
 
   @override
@@ -23,23 +78,24 @@ class _QuizScreenState extends State<QuizScreen> {
         child: Scaffold(
           backgroundColor:
               isLightMode ? AppTheme.nearlyWhite : AppTheme.nearlyBlack,
-          body: SingleChildScrollView(
-            physics: AlwaysScrollableScrollPhysics(),
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: Column(
+          body: ListView.builder(
+            shrinkWrap: true,
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(
                         top: MediaQuery.of(context).padding.top,
                         left: 16,
                         right: 16),
-                    //child: Image.asset('assets/images/feedbackImage.png'),
                   ),
                   Container(
-                    padding: const EdgeInsets.only(top: 60),
+                    padding: const EdgeInsets.only(left: 85, top: 50),
                     child: Text(
                       'Data Science Quiz',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -47,18 +103,18 @@ class _QuizScreenState extends State<QuizScreen> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text(
-                      '1. _____(“Hello Wolrd”)',
+                      '1. _____(“Hello World”)',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize: 16,
                           color: isLightMode ? Colors.black : Colors.white),
                     ),
                   ),
-                  _buildComposer(),
+                  _buildComposer(0),
                   Container(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text(
                       '2. input = _____(“Input num : “)',
                       textAlign: TextAlign.left,
@@ -67,9 +123,9 @@ class _QuizScreenState extends State<QuizScreen> {
                           color: isLightMode ? Colors.black : Colors.white),
                     ),
                   ),
-                  _buildComposer(),
+                  _buildComposer(1),
                   Container(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text(
                       '3. x = ["A", "B"]; x[1] = _',
                       textAlign: TextAlign.left,
@@ -78,9 +134,9 @@ class _QuizScreenState extends State<QuizScreen> {
                           color: isLightMode ? Colors.black : Colors.white),
                     ),
                   ),
-                  _buildComposer(),
+                  _buildComposer(2),
                   Container(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text(
                       '4. _ ini adalah komen',
                       textAlign: TextAlign.left,
@@ -89,9 +145,130 @@ class _QuizScreenState extends State<QuizScreen> {
                           color: isLightMode ? Colors.black : Colors.white),
                     ),
                   ),
-                  _buildComposer(),
+                  _buildComposer(3),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '5. Apakah benar file ekstensi python adalah .py (True or False)',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(4),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '6. Berapakah nilai dari ekspresi 4 + 3 % 5',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(5),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '7. ___ MyFunction(x)',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(6),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '8. for angka in range(5), angka[3] adalah',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(7),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '9. Bagaimana cara mendapatkan panjang dari sebuah list di Python?',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(8),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '10. Struktur data yang tidak dapat diubah (immutable) dan berisi sejumlah elemen disebut',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(9),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '11. Fungsi untuk mengonversi string ke dalam lowercase (huruf kecil)?',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(10),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '12. Fungsi untuk Menghentikan eksekusi loop dan keluar dari loop.',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(11),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '13. x = 5, y = 2. Berapa nilai x % y',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(12),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '14. x = 30, y = 8. Berapa nilai x // y',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(13),
+                  Container(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text(
+                      '15. for angka in range(0, 5, 2), berapa panjang angka?',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: isLightMode ? Colors.black : Colors.white),
+                    ),
+                  ),
+                  _buildComposer(14),
                   Padding(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Center(
                       child: Container(
                         width: 140,
@@ -112,6 +289,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           child: InkWell(
                             onTap: () {
                               FocusScope.of(context).requestFocus(FocusNode());
+                              _submitButtonPressed();
                             },
                             child: Center(
                               child: Padding(
@@ -131,17 +309,20 @@ class _QuizScreenState extends State<QuizScreen> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8.0),
+                  ),
                 ],
-              ),
-            ),
+              );
+            },
           ),
         ),
       ),
     );
   }
 
-  Widget _buildComposer() {
+  Widget _buildComposer(int questionIndex) {
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
       child: Container(
@@ -167,7 +348,9 @@ class _QuizScreenState extends State<QuizScreen> {
                   const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
               child: TextField(
                 maxLines: null,
-                onChanged: (String txt) {},
+                onChanged: (String txt) {
+                  userAnswers[questionIndex] = txt;
+                },
                 style: TextStyle(
                   fontFamily: AppTheme.fontName,
                   fontSize: 16,

@@ -1,7 +1,7 @@
 import 'package:best_flutter_ui_templates/design_course/design_course_app_theme.dart';
 import 'package:best_flutter_ui_templates/onboarding_step_one.dart';
 import 'package:flutter/material.dart';
-
+import 'dart:async';
 
 class LandingPageScreen extends StatefulWidget {
   const LandingPageScreen({Key? key}) : super(key: key);
@@ -14,10 +14,10 @@ class _LandingPageState extends State<LandingPageScreen> {
   @override
   void initState() {
     super.initState();
+    Timer(Duration(seconds: 1), _startNavigation);
   }
 
   void _startNavigation() {
-    // Navigate to the NavigationHomeScreen
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => OnboardingStepOneScreen()),

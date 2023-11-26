@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                                 title: 'Data Science',
                                 author: 'Dhavel Patel',
                                 content:
-                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...',
+                                    'Data Science is a specialized programming, advanced analytics, ...',
                               ),
                             ],
                           );
