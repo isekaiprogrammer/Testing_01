@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'onboarding_step_two.dart';
 
 class OnboardingStepOneScreen extends StatefulWidget {
-  const OnboardingStepOneScreen({Key? key}) : super(key: key);
+  //const OnboardingStepOneScreen({Key? key}) : super(key: key);
 
   @override
   _OnboardingStepOneState createState() => _OnboardingStepOneState();
@@ -30,7 +30,7 @@ class _OnboardingStepOneState extends State<OnboardingStepOneScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _nextButtonPressed, // Call the method when tapped
+      //onTap: _nextButtonPressed, // Call the method when tapped
       child: Container(
         color: Color.fromARGB(255, 12, 25, 201),
         child: Scaffold(
@@ -75,7 +75,13 @@ class _OnboardingStepOneState extends State<OnboardingStepOneScreen> {
                   SizedBox(height: 55), // Add space between dots and button
                   ElevatedButton(
                     onPressed: _nextButtonPressed,
-                    child: Text('Next'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                    ),
+                    child: Text(
+                      'Next',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),

@@ -3,7 +3,7 @@ import 'package:best_flutter_ui_templates/onboarding_step_one.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingStepTwoScreen extends StatefulWidget {
-  const OnboardingStepTwoScreen({Key? key}) : super(key: key);
+  //const OnboardingStepTwoScreen({Key? key}) : super(key: key);
 
   @override
   _OnboardingStepTwoState createState() => _OnboardingStepTwoState();
@@ -64,7 +64,7 @@ class _OnboardingStepTwoState extends State<OnboardingStepTwoScreen> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _nextButtonPressed, // Call the method when tapped
+      //onTap: _nextButtonPressed, // Call the method when tapped
       child: Container(
         color: Color.fromARGB(255, 12, 25, 201),
         child: Scaffold(
@@ -113,15 +113,24 @@ class _OnboardingStepTwoState extends State<OnboardingStepTwoScreen> {
                       ElevatedButton(
                         onPressed: _backButtonPressed,
                         style: ElevatedButton.styleFrom(
-                          primary: const Color.fromARGB(
-                              255, 243, 33, 33), // Change the color here
+                          primary: Color.fromARGB(
+                              255, 236, 43, 43), // Change the color here
                         ),
-                        child: Text('Back'),
+                        child: Text(
+                          'Back',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                       SizedBox(width: 20), // Add space between buttons
                       ElevatedButton(
                         onPressed: _nextButtonPressed,
-                        child: Text('Next'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                        ),
+                        child: Text(
+                          'Next',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ],
                   ),

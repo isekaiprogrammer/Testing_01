@@ -22,7 +22,15 @@ class _LoginState extends State<LoginScreen> {
   }
 
   void _loginButtonPressed() {
-    // Increment currentPage to move to the next onboarding step
+    setState(() {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => NavigationHomeScreen()),
+      );
+    });
+  }
+
+  void _guestLoginPressed() {
     setState(() {
       Navigator.pushReplacement(
         context,
@@ -32,7 +40,6 @@ class _LoginState extends State<LoginScreen> {
   }
 
   void _signupButtonPressed() {
-    // Decrement currentPage to move to the previous onboarding step
     setState(() {
       Navigator.pushReplacement(
         context,
@@ -126,6 +133,17 @@ class _LoginState extends State<LoginScreen> {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: _guestLoginPressed,
+                    style: ElevatedButton.styleFrom(
+                      primary: Color.fromARGB(255, 196, 178, 11),
+                    ),
+                    child: Text(
+                      'Guest Login',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
